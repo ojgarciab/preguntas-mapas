@@ -19,10 +19,20 @@ export class EjecucionExamenComponent {
   preguntasVisibles = computed(() => {
     const idx = this.estadoService.preguntaActualIndex();
     const total = this.estadoService.totalPreguntas();
-    // Mostrar hasta 5 preguntas en la barra de navegación
+    
+    let inicio = idx - 2;
+    let fin = idx + 2;
+
+    if (inicio < 0) {
+      fin = Math.min(total - 1, fin + (0 - inicio));
+      inicio = 0;
+    }
+    if (fin >= total) {
+      inicio = Math.max(0, inicio - (fin - (total - 1)));
+      fin = total - 1;
+    }
+
     const indices = [];
-    const inicio = Math.max(0, idx - 2);
-    const fin = Math.min(total - 1, idx + 2);
     for (let i = inicio; i <= fin; i++) {
       indices.push(i);
     }

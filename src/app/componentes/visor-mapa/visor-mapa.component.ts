@@ -55,20 +55,24 @@ import { AreaRespuesta, Coordenada, Circulo } from '../../modelos/examen.modelo'
               <!-- Polígono para países/regiones -->
               <polygon *ngIf="esPoligono(areaCorrecta)" 
                        [attr.points]="getPoints(areaCorrecta)" 
-                       fill="rgba(34, 197, 94, 0.4)" 
+                       fill="#22c55e" 
                        stroke="#16a34a" 
                        stroke-width="3" 
-                       stroke-dasharray="4" />
+                       stroke-dasharray="4">
+                 <animate attributeName="fill-opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite" />
+              </polygon>
               
               <!-- Círculo para ciudades/capitales -->
               <ng-container *ngIf="!esPoligono(areaCorrecta)">
                  <circle [attr.cx]="getCircle(areaCorrecta).x" 
                          [attr.cy]="getCircle(areaCorrecta).y" 
                          [attr.r]="getCircle(areaCorrecta).r || defaultR()" 
-                         fill="rgba(34, 197, 94, 0.4)" 
+                         fill="#22c55e" 
                          stroke="#16a34a" 
                          stroke-width="3" 
-                         stroke-dasharray="4" />
+                         stroke-dasharray="4">
+                    <animate attributeName="fill-opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite" />
+                 </circle>
                  
                  <!-- Punto central (especificado por el usuario) -->
                  <circle [attr.cx]="getCircle(areaCorrecta).x" 
