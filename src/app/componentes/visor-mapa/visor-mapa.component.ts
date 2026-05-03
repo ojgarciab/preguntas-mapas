@@ -20,6 +20,27 @@ import { AreaRespuesta, Coordenada, Circulo } from '../../modelos/examen.modelo'
         
         <!-- Capa de interacción y respuestas -->
         <g class="capa-respuestas">
+           <!-- Área preguntada (Solo para preguntas tipo 'opciones') -->
+           <g *ngIf="areaAPreguntar" class="capa-pregunta">
+              <!-- Polígono -->
+              <polygon *ngIf="esPoligono(areaAPreguntar)" 
+                       [attr.points]="getPoints(areaAPreguntar)" 
+                       fill="#6366f1">
+                 <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite" />
+              </polygon>
+              
+              <!-- Punto (Círculo) con Zoom y Pulso -->
+              <circle *ngIf="!esPoligono(areaAPreguntar)"
+                      [attr.cx]="getCircle(areaAPreguntar).x" 
+                      [attr.cy]="getCircle(areaAPreguntar).y"
+                      fill="#6366f1">
+                 <animate attributeName="r" 
+                          [attr.values]="(getCircle(areaAPreguntar).r || defaultR()) + ';' + ((getCircle(areaAPreguntar).r || defaultR()) * 1.25) + ';' + (getCircle(areaAPreguntar).r || defaultR())" 
+                          dur="2s" repeatCount="indefinite" />
+                 <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite" />
+              </circle>
+           </g>
+
            <!-- Respuesta del usuario (Punto donde clickeó) -->
            <circle *ngIf="clickUsuario()" 
                    [attr.cx]="clickUsuario()?.x" 
@@ -113,6 +134,7 @@ export class VisorMapaComponent {
   }
 
   @Input() areaCorrecta?: AreaRespuesta;
+  @Input() areaAPreguntar?: AreaRespuesta;
   @Input() mostrarRespuestaCorrecta = false;
   
   @Input() set respuestaPrevia(coord: Coordenada | undefined) {

@@ -46,6 +46,7 @@
         <app-visor-mapa 
           [mapaUrl]="p.mapa" 
           [areaCorrecta]="p.areaRespuesta" 
+          [areaAPreguntar]="p.tipoRespuesta === 'opciones' ? p.areaRespuesta : undefined"
           [respuestaPrevia]="getRespuestaPreviaCoord(p.respuestaUsuario)"
           (mapaClickeado)="onMapaClick($event)">
         </app-visor-mapa>
