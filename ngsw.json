@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1777836873567,
-  "index": "/preguntas-mapas/index.html",
+  "timestamp": 1777838043937,
+  "index": "/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -11,11 +11,11 @@
         "ignoreVary": true
       },
       "urls": [
-        "/preguntas-mapas/favicon.ico",
-        "/preguntas-mapas/index.html",
-        "/preguntas-mapas/main-IVOV23US.js",
-        "/preguntas-mapas/manifest.webmanifest",
-        "/preguntas-mapas/styles-WK5L5TWW.css"
+        "/favicon.ico",
+        "/index.html",
+        "/main-IVOV23US.js",
+        "/manifest.webmanifest",
+        "/styles-WK5L5TWW.css"
       ],
       "patterns": []
     },
@@ -27,37 +27,37 @@
         "ignoreVary": true
       },
       "urls": [
-        "/preguntas-mapas/icons/icon-128x128.png",
-        "/preguntas-mapas/icons/icon-144x144.png",
-        "/preguntas-mapas/icons/icon-152x152.png",
-        "/preguntas-mapas/icons/icon-192x192.png",
-        "/preguntas-mapas/icons/icon-384x384.png",
-        "/preguntas-mapas/icons/icon-512x512.png",
-        "/preguntas-mapas/icons/icon-72x72.png",
-        "/preguntas-mapas/icons/icon-96x96.png",
-        "/preguntas-mapas/mapas/europa-fisico.svg",
-        "/preguntas-mapas/mapas/europa-politico.svg"
+        "/icons/icon-128x128.png",
+        "/icons/icon-144x144.png",
+        "/icons/icon-152x152.png",
+        "/icons/icon-192x192.png",
+        "/icons/icon-384x384.png",
+        "/icons/icon-512x512.png",
+        "/icons/icon-72x72.png",
+        "/icons/icon-96x96.png",
+        "/mapas/europa-fisico.svg",
+        "/mapas/europa-politico.svg"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/preguntas-mapas/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "/preguntas-mapas/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
-    "/preguntas-mapas/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
-    "/preguntas-mapas/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
-    "/preguntas-mapas/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
-    "/preguntas-mapas/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
-    "/preguntas-mapas/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
-    "/preguntas-mapas/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
-    "/preguntas-mapas/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/preguntas-mapas/index.html": "389d6f1c94b6017742a3d1c185c9a0629cb608eb",
-    "/preguntas-mapas/main-IVOV23US.js": "f818be7e711ba96ae61d90179fb1b1dc37e18048",
-    "/preguntas-mapas/manifest.webmanifest": "d7fb0c095ba00d69b3166bc94e88dfb6ae8d7d0e",
-    "/preguntas-mapas/mapas/europa-fisico.svg": "dfbc509b4d57dd7cf0f98dd8d3ffce322ea34aac",
-    "/preguntas-mapas/mapas/europa-politico.svg": "ec28c24e9d46ce274ae14c9a134aeebe50233bc2",
-    "/preguntas-mapas/styles-WK5L5TWW.css": "3f5131b5cb2aa6c3053e3c00270082273ea038c2"
+    "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/index.html": "6af9b21c2cbb53efbda4a1f4f70bf6ebe86ff39d",
+    "/main-IVOV23US.js": "f818be7e711ba96ae61d90179fb1b1dc37e18048",
+    "/manifest.webmanifest": "d7fb0c095ba00d69b3166bc94e88dfb6ae8d7d0e",
+    "/mapas/europa-fisico.svg": "dfbc509b4d57dd7cf0f98dd8d3ffce322ea34aac",
+    "/mapas/europa-politico.svg": "ec28c24e9d46ce274ae14c9a134aeebe50233bc2",
+    "/styles-WK5L5TWW.css": "3f5131b5cb2aa6c3053e3c00270082273ea038c2"
   },
   "navigationUrls": [
     {
