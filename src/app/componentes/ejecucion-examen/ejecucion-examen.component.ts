@@ -1,5 +1,5 @@
 import { Component, inject, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { EstadoExamenService } from '../../servicios/estado-examen.servicio';
 import { Router } from '@angular/router';
 import { VisorMapaComponent } from '../visor-mapa/visor-mapa.component';
@@ -8,7 +8,7 @@ import { Coordenada } from '../../modelos/examen.modelo';
 @Component({
   selector: 'app-ejecucion-examen',
   standalone: true,
-  imports: [CommonModule, VisorMapaComponent],
+  imports: [CommonModule, VisorMapaComponent, NgFor, NgIf],
   templateUrl: './ejecucion-examen.component.html',
   styleUrl: './ejecucion-examen.component.scss'
 })

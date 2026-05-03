@@ -1,16 +1,16 @@
 {
     "nombre": "Mapa político de Europa",
-    "descripción": "Preguntas sobre el mapa político de Europa.",
+    "descripcion": "Preguntas sobre el mapa político de Europa.",
     "tipos": {
         "paises": {
             "mapa": "europa-politico.svg",
-            "exámenes": [
+            "examenes": [
                 {
                     "nombre": "Localizar países de Europa",
                     "pregunta": "¿Qué país es éste?",
                     "respuesta": {
                         "tipo": "opciones",
-                        "número": 4
+                        "numero": 4
                     }
                 },
                 {
@@ -29,13 +29,13 @@
         },
         "capitales": {
             "mapa": "europa-politico.svg",
-            "exámenes": [
+            "examenes": [
                 {
                     "nombre": "Localizar capitales de Europa",
                     "pregunta": "¿Qué capital es ésta?",
                     "respuesta": {
                         "tipo": "opciones",
-                        "número": 4
+                        "numero": 4
                     }
                 },
                 {

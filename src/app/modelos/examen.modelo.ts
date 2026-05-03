@@ -11,7 +11,7 @@ export type AreaRespuesta = Coordenada[] | Circulo;
 
 export interface DefinicionRespuesta {
   tipo: 'opciones' | 'pulsar';
-  número?: number;
+  numero?: number;
 }
 
 export interface Examen {
@@ -22,13 +22,13 @@ export interface Examen {
 
 export interface CategoriaExamen {
   mapa: string;
-  exámenes: Examen[];
+  examenes: Examen[];
   respuestas: { [clave: string]: AreaRespuesta };
 }
 
 export interface ExamenCompleto {
   nombre: string;
-  descripción: string;
+  descripcion: string;
   tipos: { [tipo: string]: CategoriaExamen };
 }
 

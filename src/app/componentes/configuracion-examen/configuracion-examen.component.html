@@ -20,7 +20,7 @@
       <button class="btn-volver" (click)="examenSeleccionado.set(null)">← Volver</button>
       <div class="titulo-grupo">
         <h2>{{ examen.nombre }}</h2>
-        <p>{{ examen.descripción }}</p>
+        <p>{{ examen.descripcion }}</p>
       </div>
       <div class="controles-globales">
         <button class="btn-secundario" (click)="setTodos('max')">Todos Máx</button>
@@ -34,17 +34,17 @@
           <span class="dot"></span>
           <h3>{{ tipoEntry.key | titlecase }}</h3>
         </div>
-        <div class="subexamen" *ngFor="let sub of tipoEntry.value.exámenes; let i = index">
+        <div class="subexamen" *ngFor="let sub of tipoEntry.value.examenes; let i = index">
           <div class="info">
             <span class="nombre">{{ sub.nombre }}</span>
-            <span class="max">Disponibles: {{ (tipoEntry.value.respuestas | keyvalue).length }}</span>
+            <span class="max">Disponibles: {{ getObjectLength(tipoEntry.value.respuestas) }}</span>
           </div>
           <div class="controles">
-            <button class="btn-control" (click)="setCantidad(tipoEntry.key + '_' + i, 0, (tipoEntry.value.respuestas | keyvalue).length)">0</button>
-            <button class="btn-control" (click)="ajustarCantidad(tipoEntry.key + '_' + i, -1, (tipoEntry.value.respuestas | keyvalue).length)">-</button>
-            <input type="number" class="input-cantidad" [ngModel]="cantidades()[tipoEntry.key + '_' + i]" (ngModelChange)="setCantidad(tipoEntry.key + '_' + i, $event, (tipoEntry.value.respuestas | keyvalue).length)">
-            <button class="btn-control" (click)="ajustarCantidad(tipoEntry.key + '_' + i, 1, (tipoEntry.value.respuestas | keyvalue).length)">+</button>
-            <button class="btn-control btn-max" (click)="setCantidad(tipoEntry.key + '_' + i, (tipoEntry.value.respuestas | keyvalue).length, (tipoEntry.value.respuestas | keyvalue).length)">max</button>
+            <button class="btn-control" (click)="setCantidad(tipoEntry.key + '_' + i, 0, getObjectLength(tipoEntry.value.respuestas))">0</button>
+            <button class="btn-control" (click)="ajustarCantidad(tipoEntry.key + '_' + i, -1, getObjectLength(tipoEntry.value.respuestas))">-</button>
+            <input type="number" class="input-cantidad" [ngModel]="cantidades()[tipoEntry.key + '_' + i]" (ngModelChange)="setCantidad(tipoEntry.key + '_' + i, $event, getObjectLength(tipoEntry.value.respuestas))">
+            <button class="btn-control" (click)="ajustarCantidad(tipoEntry.key + '_' + i, 1, getObjectLength(tipoEntry.value.respuestas))">+</button>
+            <button class="btn-control btn-max" (click)="setCantidad(tipoEntry.key + '_' + i, getObjectLength(tipoEntry.value.respuestas), getObjectLength(tipoEntry.value.respuestas))">max</button>
           </div>
         </div>
       </div>

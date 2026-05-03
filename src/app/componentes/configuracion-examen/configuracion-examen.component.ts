@@ -1,5 +1,5 @@
 import { Component, inject, signal, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, KeyValuePipe, TitleCasePipe, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ExamenesService } from '../../servicios/examenes.servicio';
 import { EstadoExamenService } from '../../servicios/estado-examen.servicio';
@@ -9,7 +9,7 @@ import { ExamenCompleto, EstadoPregunta } from '../../modelos/examen.modelo';
 @Component({
   selector: 'app-configuracion-examen',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, KeyValuePipe, TitleCasePipe, NgFor, NgIf],
   templateUrl: './configuracion-examen.component.html',
   styleUrl: './configuracion-examen.component.scss'
 })
@@ -37,7 +37,7 @@ export class ConfiguracionExamenComponent {
       this.examenSeleccionado.set(examen);
       const inicial: {[key: string]: number} = {};
       Object.keys(examen.tipos).forEach(tipoKey => {
-        examen.tipos[tipoKey].exámenes.forEach((ex, idx) => {
+        examen.tipos[tipoKey].examenes.forEach((ex, idx) => {
           inicial[`${tipoKey}_${idx}`] = 0;
         });
       });
@@ -69,12 +69,16 @@ export class ConfiguracionExamenComponent {
       Object.keys(examen.tipos).forEach(tipoKey => {
         const cat = examen.tipos[tipoKey];
         const numRespuestas = Object.keys(cat.respuestas).length;
-        cat.exámenes.forEach((ex, idx) => {
+        cat.examenes.forEach((ex, idx) => {
           nuevo[`${tipoKey}_${idx}`] = modo === 'max' ? numRespuestas : 0;
         });
       });
       return nuevo;
     });
+  }
+
+  getObjectLength(obj: any): number {
+    return obj ? Object.keys(obj).length : 0;
   }
 
   comenzar() {
@@ -88,7 +92,7 @@ export class ConfiguracionExamenComponent {
       const cat = examen.tipos[tipoKey];
       const respuestasKeys = Object.keys(cat.respuestas);
 
-      cat.exámenes.forEach((exDef, exIdx) => {
+      cat.examenes.forEach((exDef, exIdx) => {
         const cant = this.cantidades()[`${tipoKey}_${exIdx}`];
         if (cant > 0) {
           const seleccionadas = [...respuestasKeys].sort(() => 0.5 - Math.random()).slice(0, cant);
@@ -98,7 +102,7 @@ export class ConfiguracionExamenComponent {
             
             if (esOpciones) {
               const otras = respuestasKeys.filter(k => k !== respCorrecta);
-              const distractores = otras.sort(() => 0.5 - Math.random()).slice(0, (exDef.respuesta.número || 4) - 1);
+              const distractores = otras.sort(() => 0.5 - Math.random()).slice(0, (exDef.respuesta.numero || 4) - 1);
               opciones = [respCorrecta, ...distractores].sort(() => 0.5 - Math.random());
             }
 

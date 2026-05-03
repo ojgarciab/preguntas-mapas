@@ -1,16 +1,16 @@
 {
     "nombre": "Mapa físico de Europa",
-    "descripción": "Preguntas sobre accidentes geográficos de Europa.",
+    "descripcion": "Preguntas sobre accidentes geográficos de Europa.",
     "tipos": {
         "montañas": {
             "mapa": "europa-fisico.svg",
-            "exámenes": [
+            "examenes": [
                 {
                     "nombre": "Localizar montañas de Europa",
                     "pregunta": "¿Qué montaña es ésta?",
                     "respuesta": {
                         "tipo": "opciones",
-                        "número": 4
+                        "numero": 4
                     }
                 },
                 {
