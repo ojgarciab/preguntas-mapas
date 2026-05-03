@@ -3,7 +3,7 @@ name: Desplegar a GitHub Pages
 on:
   push:
     branches:
-      - main
+      - master
 
 permissions:
   contents: write
@@ -32,7 +32,7 @@ jobs:
           npm install
           echo "Usando href base: $BASE_HREF"
           # Construir con el base-href correspondiente al repositorio
-          npm run build -- --base-href "$BASE_HREF"
+          npm run build -- --base-href=$BASE_HREF
           # Truco para que Angular funcione al refrescar la página
           cp dist/preguntas-mapas/browser/index.html dist/preguntas-mapas/browser/404.html
 
