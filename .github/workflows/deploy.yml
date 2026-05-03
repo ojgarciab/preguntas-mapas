@@ -1,0 +1,30 @@
+name: Desplegar a GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  construir-y-desplegar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalación de dependencias y construcción
+        run: |
+          npm install
+          # Construir con el base-href correspondiente al repositorio
+          npm run build -- --base-href /preguntas-mapas/
+          # Truco para que Angular funcione al refrescar la página
+          cp dist/preguntas-mapas/browser/index.html dist/preguntas-mapas/browser/404.html
+
+      - name: Desplegar
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/preguntas-mapas/browser
+          branch: gh-pages
