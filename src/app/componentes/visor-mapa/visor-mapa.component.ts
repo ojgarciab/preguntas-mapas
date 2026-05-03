@@ -191,7 +191,8 @@ export class VisorMapaComponent {
       const dy = punto.y - area.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       const r = area.r || this.defaultR();
-      return dist <= r;
+      // Duplicamos el margen de error (r * 2) para que sea más intuitivo
+      return dist <= r * 2;
     }
   }
 
