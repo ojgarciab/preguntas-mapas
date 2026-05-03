@@ -1,0 +1,238 @@
+.contenedor-config {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1a1a1a;
+
+  header {
+    text-align: center;
+    margin-bottom: 50px;
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #6b7280;
+      font-size: 1.2rem;
+    }
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+
+  .grid-examenes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+
+    .tarjeta-examen {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border: 2px solid transparent;
+
+      &:hover {
+        transform: translateY(-5px);
+        border-color: #6366f1;
+        box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.1);
+      }
+
+      .icono-mapa {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        color: #1f2937;
+      }
+
+      .btn-seleccionar {
+        background: #f3f4f6;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 12px;
+        font-weight: 600;
+        color: #4b5563;
+        transition: all 0.2s;
+      }
+
+      &:hover .btn-seleccionar {
+        background: #6366f1;
+        color: white;
+      }
+    }
+  }
+
+  .configuracion-detalle {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.4s ease-out;
+
+    .cabecera-detalle {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+
+      .btn-volver {
+        background: none;
+        border: none;
+        color: #6366f1;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1.1rem;
+      }
+
+      .titulo-grupo {
+        flex: 1;
+        h2 { margin: 0; }
+        p { color: #6b7280; margin: 5px 0 0; }
+      }
+
+      .controles-globales {
+        display: flex;
+        gap: 10px;
+      }
+    }
+
+    .lista-subexamenes {
+      .categoria {
+        margin-bottom: 40px;
+        .categoria-titulo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 20px;
+          .dot {
+            width: 8px;
+            height: 8px;
+            background: #6366f1;
+            border-radius: 50%;
+          }
+          h3 { margin: 0; font-size: 1.2rem; color: #4b5563; }
+        }
+      }
+
+      .subexamen {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: #f9fafb;
+        border-radius: 16px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          .nombre { font-weight: 600; font-size: 1.1rem; }
+          .max { font-size: 0.9rem; color: #9ca3af; }
+        }
+
+        .controles {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .btn-control {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            &:hover { border-color: #6366f1; color: #6366f1; }
+          }
+
+          .btn-max { width: auto; padding: 0 12px; }
+
+          .input-cantidad {
+            width: 60px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            &:focus { outline: none; border-color: #6366f1; }
+          }
+        }
+      }
+    }
+
+    .footer-config {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid #f3f4f6;
+
+      .resumen {
+        .total { font-size: 2.5rem; font-weight: 800; color: #6366f1; }
+        .label { font-size: 1.1rem; color: #6b7280; margin-left: 10px; }
+      }
+
+      .btn-comenzar {
+        background: #6366f1;
+        color: white;
+        border: none;
+        padding: 16px 40px;
+        border-radius: 16px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+
+        &:hover { transform: scale(1.02); background: #4f46e5; }
+        &:disabled { background: #9ca3af; cursor: not-allowed; box-shadow: none; }
+      }
+    }
+  }
+}
+
+.btn-secundario {
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover { border-color: #6366f1; color: #6366f1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .contenedor-config header h1 { font-size: 2.2rem; }
+  .configuracion-detalle { padding: 25px; }
+  .footer-config { flex-direction: column; gap: 20px; text-align: center; }
+  .subexamen { justify-content: center; }
+}

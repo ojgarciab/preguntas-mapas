@@ -1,0 +1,66 @@
+<div class="contenedor-examen" *ngIf="estadoService.preguntaActual() as p">
+  <header class="header-examen">
+    <div class="info-top">
+      <div class="examen-nombre">
+        <span class="subexamen">{{ p.subExamenNombre }}</span>
+      </div>
+      <div class="contador-votos">
+        <div class="votos-bar">
+          <div class="votos-fill" [style.width.%]="(estadoService.respondidas() / estadoService.totalPreguntas()) * 100"></div>
+        </div>
+        <span class="votos-texto">{{ estadoService.respondidas() }} / {{ estadoService.totalPreguntas() }} completadas</span>
+      </div>
+    </div>
+    
+    <nav class="barra-navegacion">
+      <div class="controles-flechas">
+        <button class="btn-nav" (click)="irAInicio()" [disabled]="estadoService.preguntaActualIndex() === 0">«</button>
+        <button class="btn-nav" (click)="anterior()" [disabled]="estadoService.preguntaActualIndex() === 0">‹</button>
+      </div>
+      
+      <div class="preguntas-indices">
+        <button *ngFor="let idx of preguntasVisibles()" 
+                [class.actual]="idx === estadoService.preguntaActualIndex()"
+                [class.respondida]="estadoService.preguntas()[idx].respondida"
+                (click)="estadoService.irAPregunta(idx)">
+          {{ idx + 1 }}
+        </button>
+      </div>
+
+      <div class="controles-flechas">
+        <button class="btn-nav" (click)="siguiente()" [disabled]="estadoService.preguntaActualIndex() === estadoService.totalPreguntas() - 1">›</button>
+        <button class="btn-nav" (click)="irAFin()" [disabled]="estadoService.preguntaActualIndex() === estadoService.totalPreguntas() - 1">»</button>
+      </div>
+      
+      <button class="btn-terminar" (click)="terminar()">Finalizar</button>
+    </nav>
+  </header>
+
+  <main class="cuerpo-examen">
+    <div class="pregunta-seccion">
+      <h2 class="texto-pregunta">{{ p.preguntaTexto }}</h2>
+    </div>
+
+    <div class="layout-examen" [class.con-opciones]="p.tipoRespuesta === 'opciones'">
+      <div class="mapa-seccion">
+        <app-visor-mapa 
+          [mapaUrl]="p.mapa" 
+          [areaCorrecta]="p.areaRespuesta" 
+          [respuestaPrevia]="getRespuestaPreviaCoord(p.respuestaUsuario)"
+          (mapaClickeado)="onMapaClick($event)">
+        </app-visor-mapa>
+      </div>
+
+      <div class="respuestas-seccion" *ngIf="p.tipoRespuesta === 'opciones'">
+        <div class="grid-opciones">
+          <button *ngFor="let opcion of p.opciones" 
+                  class="btn-opcion"
+                  [class.seleccionada]="p.respuestaUsuario === opcion"
+                  (click)="responderOpcion(opcion)">
+            {{ opcion }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

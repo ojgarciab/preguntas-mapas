@@ -1,0 +1,63 @@
+<div class="contenedor-config">
+  <header>
+    <h1>Explora el Mundo</h1>
+    <p>Pon a prueba tus conocimientos geográficos</p>
+  </header>
+
+  <section class="seleccion-examen" *ngIf="!examenSeleccionado()">
+    <h2>Selecciona un mapa</h2>
+    <div class="grid-examenes">
+      <div class="tarjeta-examen" *ngFor="let ex of examenesDisponibles()" (click)="seleccionarExamen(ex.id)">
+        <div class="icono-mapa">🗺️</div>
+        <h3>{{ ex.nombre }}</h3>
+        <button class="btn-seleccionar">Configurar</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="configuracion-detalle" *ngIf="examenSeleccionado() as examen">
+    <div class="cabecera-detalle">
+      <button class="btn-volver" (click)="examenSeleccionado.set(null)">← Volver</button>
+      <div class="titulo-grupo">
+        <h2>{{ examen.nombre }}</h2>
+        <p>{{ examen.descripción }}</p>
+      </div>
+      <div class="controles-globales">
+        <button class="btn-secundario" (click)="setTodos('max')">Todos Máx</button>
+        <button class="btn-secundario" (click)="setTodos('cero')">Limpiar</button>
+      </div>
+    </div>
+
+    <div class="lista-subexamenes">
+      <div class="categoria" *ngFor="let tipoEntry of examen.tipos | keyvalue">
+        <div class="categoria-titulo">
+          <span class="dot"></span>
+          <h3>{{ tipoEntry.key | titlecase }}</h3>
+        </div>
+        <div class="subexamen" *ngFor="let sub of tipoEntry.value.exámenes; let i = index">
+          <div class="info">
+            <span class="nombre">{{ sub.nombre }}</span>
+            <span class="max">Disponibles: {{ (tipoEntry.value.respuestas | keyvalue).length }}</span>
+          </div>
+          <div class="controles">
+            <button class="btn-control" (click)="setCantidad(tipoEntry.key + '_' + i, 0, (tipoEntry.value.respuestas | keyvalue).length)">0</button>
+            <button class="btn-control" (click)="ajustarCantidad(tipoEntry.key + '_' + i, -1, (tipoEntry.value.respuestas | keyvalue).length)">-</button>
+            <input type="number" class="input-cantidad" [ngModel]="cantidades()[tipoEntry.key + '_' + i]" (ngModelChange)="setCantidad(tipoEntry.key + '_' + i, $event, (tipoEntry.value.respuestas | keyvalue).length)">
+            <button class="btn-control" (click)="ajustarCantidad(tipoEntry.key + '_' + i, 1, (tipoEntry.value.respuestas | keyvalue).length)">+</button>
+            <button class="btn-control btn-max" (click)="setCantidad(tipoEntry.key + '_' + i, (tipoEntry.value.respuestas | keyvalue).length, (tipoEntry.value.respuestas | keyvalue).length)">max</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-config">
+      <div class="resumen">
+        <span class="total">{{ totalSeleccionado() }}</span>
+        <span class="label">preguntas en total</span>
+      </div>
+      <button class="btn-comenzar" [disabled]="totalSeleccionado() === 0" (click)="comenzar()">
+        Comenzar Examen
+      </button>
+    </footer>
+  </section>
+</div>

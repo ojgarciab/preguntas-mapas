@@ -1,0 +1,80 @@
+<div class="contenedor-resultados">
+  
+  <div class="pantalla-resumen" *ngIf="!modoRevision()">
+    <header class="header-resultados">
+      <div class="decoracion-fondo"></div>
+      <h1>Resumen del Examen</h1>
+      <div class="circulo-porcentaje" [style.color]="colorResultado" [style.border-color]="colorResultado">
+        <span class="valor">{{ estadoService.resultados().porcentaje | number:'1.0-0' }}%</span>
+      </div>
+      <p class="feedback-texto">Has acertado <strong>{{ estadoService.resultados().aciertos }}</strong> de <strong>{{ estadoService.resultados().totalPreguntas }}</strong> preguntas.</p>
+    </header>
+
+    <div class="seccion-estadisticas">
+      <h3>Desglose por categoría</h3>
+      <div class="grid-stats">
+        <div class="tarjeta-stat" *ngFor="let stat of estadoService.resultados().estadisticasPorTipo | keyvalue">
+          <div class="stat-info">
+            <span class="label">{{ stat.key }}</span>
+            <span class="cuenta">{{ stat.value.aciertos }} / {{ stat.value.total }}</span>
+          </div>
+          <div class="bar-container">
+            <div class="bar-fill" [style.width.%]="(stat.value.aciertos / stat.value.total) * 100" [style.background]="colorResultado"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-resultados">
+      <button class="btn-secundario" (click)="activarRevision()">
+        <span class="icon">🔍</span> Revisar respuestas
+      </button>
+      <button class="btn-primario" (click)="nuevaPrueba()">
+        <span class="icon">🔄</span> Nueva prueba
+      </button>
+    </footer>
+  </div>
+
+  <div class="pantalla-revision" *ngIf="modoRevision()">
+    <header class="header-revision">
+      <div class="top-nav">
+        <button class="btn-volver" (click)="modoRevision.set(false)">← Volver al resumen</button>
+        <div class="indicador-acierto" [class.correcto]="preguntaActual()?.esCorrecta" [class.incorrecto]="!preguntaActual()?.esCorrecta">
+          {{ preguntaActual()?.esCorrecta ? '✓ ACERTADA' : '✗ FALLADA' }}
+        </div>
+      </div>
+      <div class="revision-info">
+        <h2>Pregunta {{ preguntaRevisionIndex() + 1 }}</h2>
+        <h3>{{ preguntaActual()?.preguntaTexto }}</h3>
+        <div class="respuesta-correcta-info" *ngIf="preguntaActual()?.tipoRespuesta === 'opciones'">
+          Respuesta correcta: <span class="badge">{{ preguntaActual()?.respuestaCorrecta }}</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="cuerpo-revision">
+      <div class="visor-container">
+         <app-visor-mapa 
+          [mapaUrl]="preguntaActual()?.mapa || ''" 
+          [areaCorrecta]="preguntaActual()?.areaRespuesta" 
+          [respuestaPrevia]="getRespuestaPreviaCoord(preguntaActual()?.respuestaUsuario)"
+          [mostrarRespuestaCorrecta]="true">
+        </app-visor-mapa>
+      </div>
+    </main>
+
+    <footer class="nav-revision">
+      <button class="btn-nav" (click)="anterior()" [disabled]="preguntaRevisionIndex() === 0">‹</button>
+      <div class="puntos-nav">
+        <span *ngFor="let p of estadoService.preguntas(); let i = index" 
+              class="punto"
+              [class.actual]="i === preguntaRevisionIndex()"
+              [class.bien]="p.esCorrecta"
+              [class.mal]="!p.esCorrecta"
+              (click)="irAPregunta(i)"></span>
+      </div>
+      <button class="btn-nav" (click)="siguiente()" [disabled]="preguntaRevisionIndex() === estadoService.totalPreguntas() - 1">›</button>
+    </footer>
+  </div>
+
+</div>
