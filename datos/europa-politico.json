@@ -1,0 +1,56 @@
+{
+    "nombre": "Mapa político de Europa",
+    "descripcion": "Preguntas sobre el mapa político de Europa.",
+    "tipos": {
+        "paises": {
+            "mapa": "europa-politico.svg",
+            "examenes": [
+                {
+                    "nombre": "Localizar países de Europa",
+                    "pregunta": "¿Qué país es éste?",
+                    "respuesta": {
+                        "tipo": "opciones",
+                        "numero": 4
+                    }
+                },
+                {
+                    "nombre": "Identificar el país de Europa",
+                    "pregunta": "Localiza {}",
+                    "respuesta": {
+                        "tipo": "pulsar"
+                    }
+                }
+            ],
+            "respuestas": {
+                "España": [{ "x": 100, "y": 450 }, { "x": 150, "y": 400 }, { "x": 200, "y": 450 }, { "x": 150, "y": 500 }],
+                "Francia": [{ "x": 150, "y": 350 }, { "x": 200, "y": 300 }, { "x": 250, "y": 350 }, { "x": 200, "y": 400 }],
+                "Italia": [{ "x": 250, "y": 450 }, { "x": 300, "y": 450 }, { "x": 300, "y": 550 }, { "x": 250, "y": 550 }]
+            }
+        },
+        "capitales": {
+            "mapa": "europa-politico.svg",
+            "examenes": [
+                {
+                    "nombre": "Localizar capitales de Europa",
+                    "pregunta": "¿Qué capital es ésta?",
+                    "respuesta": {
+                        "tipo": "opciones",
+                        "numero": 4
+                    }
+                },
+                {
+                    "nombre": "Identificar capitales de Europa",
+                    "pregunta": "Localiza {}",
+                    "respuesta": {
+                        "tipo": "pulsar"
+                    }
+                }
+            ],
+            "respuestas": {
+                "Madrid": { "x": 150, "y": 450, "r": 10 },
+                "París": { "x": 200, "y": 350, "r": 10 },
+                "Roma": { "x": 280, "y": 500, "r": 10 }
+            }
+        }
+    }
+}

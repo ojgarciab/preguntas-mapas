@@ -1,0 +1,12 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#add8e6" />
+  <text x="400" y="300" font-family="Arial" font-size="24" text-anchor="middle">Mapa Político de Europa (Simulado)</text>
+  <!-- Simulación de países -->
+  <polygon points="100,450 150,400 200,450 150,500" fill="#90ee90" stroke="black" />
+  <polygon points="150,350 200,300 250,350 200,400" fill="#ffb6c1" stroke="black" />
+  <polygon points="250,450 300,450 300,550 250,550" fill="#ffffe0" stroke="black" />
+  <!-- Simulación de capitales -->
+  <circle cx="150" cy="450" r="5" fill="red" />
+  <circle cx="200" cy="350" r="5" fill="red" />
+  <circle cx="280" cy="500" r="5" fill="red" />
+</svg>

@@ -1,0 +1,7 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#add8e6" />
+  <text x="400" y="300" font-family="Arial" font-size="24" text-anchor="middle">Mapa Físico de Europa (Simulado)</text>
+  <rect x="140" y="410" width="40" height="20" fill="#8b4513" />
+  <rect x="220" y="400" width="60" height="40" fill="#8b4513" />
+  <rect x="320" y="380" width="60" height="70" fill="#8b4513" />
+</svg>
