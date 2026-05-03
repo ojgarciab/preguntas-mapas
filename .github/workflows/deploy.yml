@@ -11,15 +11,28 @@ permissions:
 jobs:
   construir-y-desplegar:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Determinar base-href
+        id: basehref
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
+          if [ -f CNAME ]
+          then
+            echo "BASE_HREF=/" >> $GITHUB_ENV
+          else
+            echo "BASE_HREF=/$REPO_NAME/" >> $GITHUB_ENV
+          fi
+
       - name: Instalación de dependencias y construcción
         run: |
           npm install
+          echo "Usando href base: $BASE_HREF"
           # Construir con el base-href correspondiente al repositorio
-          npm run build -- --base-href /preguntas-mapas/
+          npm run build -- --base-href "$BASE_HREF"
           # Truco para que Angular funcione al refrescar la página
           cp dist/preguntas-mapas/browser/index.html dist/preguntas-mapas/browser/404.html
 
